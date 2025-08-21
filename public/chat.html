@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chat - 4ª Revolução Industrial</title>
+<link rel="stylesheet" href="style.css">
+<style>
+body {
+  margin:0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display:flex;
+  background:#f0f4f8;
+  color:#333;
+}
+
+/* Sidebar */
+.sidebar {
+  width:250px;
+  background:#1e3a8a;
+  color:white;
+  padding:20px;
+  height:100vh;
+}
+.sidebar h2 { font-size:22px; margin-bottom:20px; }
+.sidebar a { display:block; color:white; text-decoration:none; padding:10px 0; transition:0.2s; }
+.sidebar a:hover { color:#60a5fa; }
+
+/* Chat */
+.chat-container {
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  padding:20px;
+}
+
+.chat-header {
+  font-size:20px;
+  color:#1e3a8a;
+  margin-bottom:10px;
+}
+
+.chat-box {
+  flex:1;
+  background:white;
+  border-radius:10px;
+  padding:20px;
+  overflow-y:auto;
+  box-shadow:0 4px 8px rgba(0,0,0,0.1);
+}
+
+.message.self { background:#60a5fa; color:white; margin-left:auto; }
+.message.other { background:#e0e7ff; color:#000; margin-right:auto; }
+
+.chat-form { display:flex; gap:5px; margin-top:10px; }
+.chat-form input[type="text"] { flex:1; padding:10px; border-radius:6px; border:1px solid #ccc; }
+.chat-form input[type="file"] { border-radius:6px; }
+.chat-form button { background:#1e3a8a; color:white; border:none; padding:10px 14px; border-radius:6px; cursor:pointer; }
+.chat-form button:hover { background:#2563eb; }
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+  <h2>Menu</h2>
+  <a href="index.html">Início</a>
+  <a href="tecnologias.html">Tecnologias</a>
+  <a href="impactos.html">Impactos</a>
+  <a href="curiosidades.html">Curiosidades</a>
+  <a href="quiz.html">Quiz</a>
+  <a href="chat.html">Chat</a>
+</div>
+
+<div class="chat-container">
+  <div class="chat-header">Chat em tempo real ♥</div>
+  <div id="messages" class="chat-box"></div>
+  <form id="chat-form" class="chat-form">
+    <input id="messageInput" autocomplete="off" placeholder="Digite sua mensagem...">
+    <input type="file" id="fileInput">
+    <button>Enviar</button>
+  </form>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+const socket = io();
+const messages = document.getElementById('messages');
+const form = document.getElementById('chat-form');
+const messageInput = document.getElementById('messageInput');
+const fileInput = document.getElementById('fileInput');
+
+// Pergunta o nome apenas uma vez
+let userName = localStorage.getItem('chatUserName');
+if(!userName){
+    userName = prompt("Digite seu nome para o chat:");
+    localStorage.setItem('chatUserName', userName);
+}
+
+// Envio de mensagem
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+
+  const text = messageInput.value.trim();
+  const file = fileInput.files[0];
+
+  if(!text && !file) return;
+
+  let messageObj = { text: text || '', file: null, userName };
+
+  if(file){
+    const formData = new FormData();
+    formData.append('file', file);
+    const res = await fetch('/upload', { method: 'POST', body: formData });
+    const data = await res.json();
+    messageObj.file = data;
+  }
+
+  socket.emit('chat message', messageObj);
+
+  messageInput.value = '';
+  fileInput.value = '';
+});
+
+// Receber mensagens
+socket.on('chat history', history => {
+  history.forEach(msg => renderMessage(msg));
+});
+
+socket.on('chat message', msg => renderMessage(msg));
+
+// Função para renderizar mensagens
+function renderMessage(msg){
+  const div = document.createElement('div');
+  div.classList.add('message');
+  div.classList.add(msg.userName === userName ? 'self' : 'other');
+
+  if(msg.userName){
+    const nameEl = document.createElement('strong');
+    nameEl.textContent = msg.userName + ": ";
+    div.appendChild(nameEl);
+  }
+
+  if(msg.text) div.appendChild(document.createTextNode(msg.text));
+
+  if(msg.file){
+    const link = document.createElement('a');
+    link.href = msg.file.filePath;
+    link.textContent = msg.file.fileName;
+    link.target="_blank";
+    if(msg.text) div.appendChild(document.createElement('br'));
+    div.appendChild(link);
+  }
+
+  messages.appendChild(div);
+  messages.scrollTop = messages.scrollHeight;
+}
+</script>
+
+</body>
+</html>

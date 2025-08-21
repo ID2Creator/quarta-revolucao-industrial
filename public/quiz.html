@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz - 4ª Revolução Industrial</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #f4f6f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  .quiz-container {
+    background: white;
+    width: 450px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    overflow: hidden;
+    padding-bottom: 20px;
+  }
+  /* Barra de progresso */
+  .progress {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 15px 0;
+    background: #e9ecef;
+  }
+  .progress span {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #ccc;
+    display: inline-block;
+  }
+  .progress .current {
+    border: 2px solid #0d6efd;
+    background: white;
+  }
+  .progress .correct {
+    background: #0d6efd;
+  }
+  .progress .wrong {
+    background: #dc3545;
+  }
+
+  .quiz-header {
+    background: #0d6efd;
+    color: white;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+  }
+  .quiz-body {
+    padding: 30px 20px;
+  }
+  .option {
+    display: block;
+    width: 100%;
+    margin: 12px 0;
+    padding: 12px;
+    border: 2px solid #0d6efd;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+    text-align: center;
+    font-weight: 500;
+    background: white;
+    color: #0d6efd;
+  }
+  .option:hover {
+    background: #e2edff;
+  }
+  .option.correct {
+    background: #0d6efd;
+    color: white;
+    border-color: #0d6efd;
+  }
+  .option.wrong {
+    background: #dc3545;
+    color: white;
+    border-color: #dc3545;
+  }
+  #quiz-result {
+    margin-top: 20px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 18px;
+    color: #0d6efd;
+  }
+</style>
+</head>
+<body>
+<div class="quiz-container">
+  <!-- Contador -->
+  <div id="question-counter" style="text-align:center; padding:10px; font-weight:600; color:#0d6efd;">
+    Pergunta 1 de 3
+  </div>
+
+
+<!-- Dentro da quiz-container, por exemplo abaixo do quiz-body -->
+<div style="text-align:center; margin-top:15px;">
+  <button id="back-btn" style="padding:10px 20px; border:none; border-radius:8px; background:#0d6efd; color:white; font-weight:600; cursor:pointer;">
+    Voltar
+  </button>
+</div>
+
+<script>
+  const backBtn = document.getElementById('back-btn');
+
+  backBtn.addEventListener('click', () => {
+    const confirmar = confirm("Tem certeza que quer sair do quiz?");
+    if(confirmar){
+      window.location.href = "index.html"; // Página para voltar
+    }
+  });
+</script>
+
+
+  <!-- Barra de progresso -->
+  <div class="progress" id="progress"></div>
+
+  <div class="quiz-header" id="question">Carregando pergunta...</div>
+  <div class="quiz-body" id="options"></div>
+  <div id="quiz-result"></div>
+</div>
+
+
+<script>
+const quizData = [
+  {question:"Qual tecnologia é central na Indústria 4.0?", options:["Big Data","Máquina a vapor","Energia nuclear","Carros elétricos"], correct:0},
+  {question:"Qual tecnologia permite simulações digitais de processos?", options:["Robôs autônomos","Realidade Aumentada","Simulações","Impressão 3D"], correct:2},
+  {question:"O que é IoT?", options:["Internet das Coisas","Inteligência Operacional Total","Organização de Transporte","Robótica Integrada"], correct:0}
+];
+
+let currentQuestion = 0;
+let score = 0;
+
+// Criar barra de progresso
+const progressContainer = document.getElementById('progress');
+quizData.forEach(()=> {
+  const span = document.createElement('span');
+  progressContainer.appendChild(span);
+});
+
+function updateProgress() {
+  const spans = progressContainer.querySelectorAll('span');
+  spans.forEach((s,i)=>{
+    s.className = '';
+    if(i < currentQuestion) {
+      s.classList.add(quizData[i].answeredCorrect ? 'correct':'wrong');
+    } else if(i === currentQuestion) {
+      s.classList.add('current');
+    }
+  });
+}
+
+function updateCounter() {
+  const counter = document.getElementById('question-counter');
+  const total = quizData.length;
+  const current = Math.min(currentQuestion + 1, total); // +1 porque currentQuestion começa em 0
+  counter.innerText = `Pergunta ${current} de ${total}`;
+}
+
+function loadQuestion() {
+  updateCounter();  // Atualiza contador
+  updateProgress(); // Atualiza barra de progresso
+  const q = quizData[currentQuestion];
+  document.getElementById("question").innerText = q.question;
+  const optionsDiv = document.getElementById("options");
+  optionsDiv.innerHTML = "";
+  q.options.forEach((option, index) => {
+    const btn = document.createElement("button");
+    btn.innerText = option;
+    btn.classList.add("option");
+    btn.onclick = () => checkAnswer(index, btn);
+    optionsDiv.appendChild(btn);
+  });
+}
+
+
+function checkAnswer(selected, btn) {
+  const q = quizData[currentQuestion];
+  q.answeredCorrect = selected === q.correct;
+  if(q.answeredCorrect){
+    btn.classList.add("correct");
+    score++;
+  } else {
+    btn.classList.add("wrong");
+  }
+
+  setTimeout(()=>{
+    currentQuestion++;
+    if(currentQuestion < quizData.length){
+      loadQuestion();
+    } else {
+      document.getElementById("options").innerHTML = "";
+      document.getElementById("question").innerText = "Quiz finalizado!";
+      document.getElementById("quiz-result").innerText = `Você acertou ${score} de ${quizData.length} 🎉`;
+      updateProgress();
+    }
+  },1000);
+}
+
+loadQuestion();
+</script>
+</body>
+</html>

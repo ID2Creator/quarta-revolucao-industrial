@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tecnologias - 4ª Revolução Industrial</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f4f8;
+      color: #333;
+      display: flex;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 250px;
+      background: #1e3a8a;
+      color: white;
+      padding: 20px;
+      height: 100vh;
+    }
+    .sidebar h2 {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+    .sidebar a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 10px 0;
+      transition: all 0.3s ease;
+    }
+    .sidebar a:hover {
+      color: #60a5fa;
+      transform: translateX(5px);
+    }
+    .sidebar a.active {
+      color: #60a5fa;
+      font-weight: 600;
+    }
+
+    /* Conteúdo principal */
+    .content {
+      flex: 1;
+      padding: 40px;
+    }
+    .content h1 {
+      font-size: 36px;
+      color: #1e3a8a;
+      margin-bottom: 5px;
+    }
+    .content h2 {
+      font-size: 22px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    /* Cards de vídeo */
+    .video-card {
+      background: white;
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .video-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    .video-card h3 {
+      color: #1e3a8a;
+      margin-top: 0;
+    }
+    .video-card video {
+      width: 100%;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+    .video-card p {
+      margin-top: 10px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+<div class="sidebar">
+  <h2>Menu</h2>
+  <a href="index.html">Início</a>
+  <a href="tecnologias.html" class="active">Tecnologias</a>
+  <a href="impactos.html">Impactos</a>
+  <a href="curiosidades.html">Curiosidades</a>
+  <a href="quiz.html">Quiz</a>
+  <a href="contato.html">Contato</a>
+</div>
+
+<div class="content">
+  <!-- Crédito -->
+  <p style="color:#1e3a8a; font-weight:500; font-size:16px; margin-bottom:10px; font-style:italic;">
+    Por Daniel Oliveira Berlitz ♥
+  </p>
+
+  <h1>Tecnologias da 4ª Revolução Industrial</h1>
+  <h2>Assista a vídeos sobre inovação e transformação digital</h2>
+
+  <div class="video-card">
+    <h3>Inteligência Artificial</h3>
+    <video controls>
+      <source src="videos/ia.mp4" type="video/mp4">
+      Seu navegador não suporta o vídeo.
+    </video>
+    <p>A IA está revolucionando processos de trabalho e otimizando decisões em diversas áreas.</p>
+  </div>
+
+  <div class="video-card">
+    <h3>Robótica Avançada</h3>
+    <video controls>
+      <source src="videos/robos.mp4" type="video/mp4">
+      Seu navegador não suporta o vídeo.
+    </video>
+    <p>Robôs inteligentes realizam tarefas complexas com precisão e autonomia.</p>
+  </div>
+
+
+  <div class="video-card">
+    <h3>Impressão 3D / Manufatura Aditiva</h3>
+    <video controls>
+      <source src="videos/imp3d.mp4" type="video/mp4">
+      Seu navegador não suporta o vídeo.
+    </video>
+    <p>Produção personalizada e rápida prototipagem com tecnologias de manufatura digital.</p>
+  </div>
+
+</div>
+
+</body>
+</html>

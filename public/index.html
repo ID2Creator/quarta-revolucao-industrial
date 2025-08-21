@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4ª Revolução Industrial</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f4f8;
+      color: #333;
+      display: flex;
+    }
+    .sidebar {
+      width: 250px;
+      background: #1e3a8a;
+      color: white;
+      padding: 20px;
+      height: 100vh;
+    }
+    .sidebar h2 {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+   .sidebar a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 10px 0;
+  transition: all 0.3s ease;
+}
+
+/* Hover elegante: muda cor e aumenta levemente */
+.sidebar a:hover {
+  color: #60a5fa;          /* mesma cor que você já tinha */
+  transform: translateX(5px); /* leve movimento para a direita */
+}
+
+    .content {
+      flex: 1;
+      padding: 40px;
+    }
+    .content h1 {
+      font-size: 40px;
+      color: #1e3a8a;
+    }
+    .content h2 {
+      font-size: 22px;
+      color: #555;
+    }
+    .content p {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+
+    /* Modal */
+    .modal {
+      display: none; /* escondido por padrão */
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 400px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    .modal-content h3 {
+      margin-top: 0;
+      color: #1e3a8a;
+    }
+    .close-btn {
+      margin-top: 15px;
+      padding: 8px 16px;
+      background: #1e3a8a;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .close-btn:hover {
+      background: #2563eb;
+    }
+    .hyperlink {
+      color: #2563eb;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+<div class="sidebar">
+  <h2>Menu</h2>
+  <a href="index.html">Início</a>
+  <a href="tecnologias.html">Tecnologias</a>
+  <a href="impactos.html">Impactos</a>
+  <a href="contato.html">Contato</a>
+    <a href="curiosidades.html">Curiosidades</a>
+  <!-- Link para o Quiz -->
+  <a href="quiz.html">Quiz</a>
+</div>
+
+
+<div class="content">
+  <!-- Crédito -->
+  <p style="color:#1e3a8a; font-weight:500; font-size:16px; margin-bottom:10px; font-style:italic;">
+    Por Daniel Oliveira Berlitz ♥
+  </p>
+
+  <h1>A 4ª Revolução Industrial</h1>
+  <h2>A era da tecnologia avançada</h2>
+  <p>
+    A <span class="hyperlink" onclick="openModal('industria')">Indústria 4.0</span> 
+    está transformando o mundo. Com ela, surgem novas tecnologias como 
+    <span class="hyperlink" onclick="openModal('ia')">Inteligência Artificial</span> 
+    e <span class="hyperlink" onclick="openModal('iot')">Internet das Coisas</span>.
+  </p>
+</div>
+
+
+  <!-- Modals -->
+  <div id="modal-industria" class="modal">
+    <div class="modal-content">
+      <h3>Indústria 4.0</h3>
+      <p>A fusão entre mundo físico, digital e biológico, trazendo fábricas inteligentes.</p>
+      <button class="close-btn" onclick="closeModal('industria')">Fechar</button>
+    </div>
+  </div>
+
+  <div id="modal-ia" class="modal">
+    <div class="modal-content">
+      <h3>Inteligência Artificial</h3>
+      <p>A IA está mudando como trabalhamos e interagimos, trazendo automação e inovação.</p>
+      <button class="close-btn" onclick="closeModal('ia')">Fechar</button>
+    </div>
+  </div>
+
+<section class="py-12 bg-gray-50">
+  <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-10">
+    
+    <!-- Imagem -->
+    <div class="flex-1 flex justify-center">
+      <img src="img/industria4.png" alt="Indústria 4.0" class="w-96 drop-shadow-lg rounded-xl">
+    </div>
+    
+    <!-- Texto Explicativo -->
+    <div class="flex-1 space-y-4">
+      <h2 class="text-3xl font-bold text-gray-800">Indústria 4.0</h2>
+      <p class="text-gray-600 leading-relaxed">
+        A <strong>Indústria 4.0</strong> representa a integração de tecnologias digitais avançadas nos processos industriais, promovendo mais eficiência, conectividade e automação.  
+      </p>
+      <ul class="list-disc pl-5 text-gray-600 space-y-2">
+        <li><strong>Big Data:</strong> análise de grandes volumes de dados para decisões estratégicas.</li>
+        <li><strong>Realidade Aumentada:</strong> suporte virtual para manutenção e produção.</li>
+        <li><strong>Impressão 3D / Manufatura Aditiva:</strong> prototipagem rápida e produção personalizada.</li>
+        <li><strong>Computação em Nuvem:</strong> armazenamento e processamento remoto.</li>
+        <li><strong>Cibersegurança:</strong> proteção contra ataques digitais.</li>
+        <li><strong>Internet das Coisas (IoT):</strong> dispositivos conectados trocando informações.</li>
+        <li><strong>Integração de Sistemas:</strong> conexão entre máquinas, softwares e setores.</li>
+        <li><strong>Simulações:</strong> testes virtuais antes da execução real.</li>
+        <li><strong>Robôs Autônomos:</strong> automação inteligente de tarefas repetitivas.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+  
+  <div id="modal-iot" class="modal">
+    <div class="modal-content">
+      <h3>Internet das Coisas</h3>
+      <p>Dispositivos conectados compartilhando dados em tempo real, revolucionando indústrias.</p>
+      <button class="close-btn" onclick="closeModal('iot')">Fechar</button>
+    </div>
+  </div>
+
+  <script>
+    function openModal(id) {
+      document.getElementById("modal-" + id).style.display = "flex";
+    }
+    function closeModal(id) {
+      document.getElementById("modal-" + id).style.display = "none";
+    }
+  </script>
+
+  <!-- Coloque logo antes do </body> -->
+<footer style="width:100%; text-align:center; padding:15px 0; background:#f0f4f8; color:#1e3a8a; font-weight:500; position:fixed; bottom:0; left:0;">
+  Por Danis ♥
+</footer>
+
+</body>
+</html>

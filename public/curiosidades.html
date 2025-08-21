@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curiosidades - 4ª Revolução Industrial</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f4f8;
+      color: #333;
+      display: flex;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 250px;
+      background: #1e3a8a;
+      color: white;
+      padding: 20px;
+      height: 100vh;
+    }
+    .sidebar h2 {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+    .sidebar a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 10px 0;
+      transition: all 0.3s ease;
+    }
+    .sidebar a:hover {
+      color: #60a5fa;
+      transform: translateX(5px);
+    }
+    .sidebar a.active {
+      color: #60a5fa;
+      font-weight: 600;
+    }
+
+    /* Conteúdo principal */
+    .content {
+      flex: 1;
+      padding: 40px;
+    }
+    .content h1 {
+      font-size: 36px;
+      color: #1e3a8a;
+      margin-bottom: 5px;
+    }
+    .content h2 {
+      font-size: 22px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+    .curiosity {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .curiosity:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    .curiosity h3 {
+      margin-top: 0;
+      color: #1e3a8a;
+    }
+  </style>
+</head>
+<body>
+
+<div class="sidebar">
+  <h2>Menu</h2>
+  <a href="index.html">Início</a>
+  <a href="tecnologias.html">Tecnologias</a>
+  <a href="impactos.html">Impactos</a>
+  <a href="contato.html">Contato</a>
+  <a href="quiz.html">Quiz</a>
+  <a href="curiosidades.html" class="active">Curiosidades</a>
+</div>
+
+<div class="content">
+  <!-- Crédito -->
+  <p style="color:#1e3a8a; font-weight:500; font-size:16px; margin-bottom:10px; font-style:italic;">
+    Por Daniel Oliveira Berlitz ♥
+  </p>
+
+  <h1>Curiosidades da 4ª Revolução Industrial</h1>
+  <h2>Fatos interessantes e inovadores</h2>
+
+  <div class="curiosity">
+    <h3>Carros Autônomos</h3>
+    <p>Veículos inteligentes já estão sendo testados em várias cidades do mundo, podendo reduzir acidentes e congestionamentos.</p>
+  </div>
+
+  <div class="curiosity">
+    <h3>Robôs Cirúrgicos</h3>
+    <p>Robôs auxiliam cirurgias complexas com precisão milimétrica, tornando procedimentos menos invasivos e mais seguros.</p>
+  </div>
+
+  <div class="curiosity">
+    <h3>Fábricas Inteligentes</h3>
+    <p>Linhas de produção conectadas digitalmente permitem monitoramento em tempo real e manutenção preditiva.</p>
+  </div>
+
+  <div class="curiosity">
+    <h3>Internet das Coisas</h3>
+    <p>Dispositivos conectados trocam informações constantemente, tornando casas, cidades e indústrias mais inteligentes.</p>
+  </div>
+
+</div>
+
+</body>
+</html>
