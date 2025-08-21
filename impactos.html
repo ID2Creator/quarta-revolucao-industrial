@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impactos - 4ª Revolução Industrial</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f4f8;
+      color: #333;
+      display: flex;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 250px;
+      background: #1e3a8a;
+      color: white;
+      padding: 20px;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+    .sidebar h2 {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+    .sidebar a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 10px 0;
+      transition: all 0.3s ease;
+    }
+    .sidebar a:hover {
+      color: #60a5fa;
+      transform: translateX(5px);
+    }
+    .sidebar a.active {
+      color: #60a5fa;
+      font-weight: 600;
+    }
+
+    /* Conteúdo principal */
+    .content {
+      margin-left: 270px; /* espaço pro menu fixo */
+      padding: 40px;
+      flex: 1;
+    }
+    .content h1 {
+      font-size: 36px;
+      background: linear-gradient(90deg, #1e3a8a, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 5px;
+    }
+    .content h2 {
+      font-size: 20px;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    /* Cards de impacto */
+    .impacts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .impact {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
+      border: 2px solid transparent;
+    }
+    .impact:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+      border: 2px solid #3b82f6;
+    }
+    .impact h3 {
+      margin-top: 0;
+      color: #1e3a8a;
+      font-size: 20px;
+    }
+    .impact p {
+      margin: 10px 0 0;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+<div class="sidebar">
+  <h2>Menu</h2>
+  <a href="index.html">Início</a>
+  <a href="tecnologias.html">Tecnologias</a>
+  <a href="curiosidades.html">Curiosidades</a>
+  <a href="quiz.html">Quiz</a>
+  <a href="impactos.html" class="active">Impactos</a>
+</div>
+
+<div class="content">
+  <h1>Impactos da 4ª Revolução Industrial</h1>
+  <h2>Como a tecnologia transforma nossas vidas</h2>
+
+  <div class="impacts">
+    <div class="impact">
+      <h3>Automação e Empregos</h3>
+      <p>Processos automatizados aumentam eficiência, mas também exigem requalificação da mão de obra.</p>
+    </div>
+
+    <div class="impact">
+      <h3>Educação e Capacitação</h3>
+      <p>A necessidade de habilidades digitais e pensamento crítico cresce com novas tecnologias.</p>
+    </div>
+
+    <div class="impact">
+      <h3>Sustentabilidade</h3>
+      <p>Tecnologias inteligentes ajudam a reduzir desperdícios e a criar processos industriais mais sustentáveis.</p>
+    </div>
+
+    <div class="impact">
+      <h3>Saúde e Medicina</h3>
+      <p>Robôs e inteligência artificial melhoram diagnósticos, tratamentos e pesquisas médicas.</p>
+    </div>
+
+    <div class="impact">
+      <h3>Conectividade Global</h3>
+      <p>A integração digital permite comunicação e colaboração instantânea entre pessoas e empresas no mundo todo.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
